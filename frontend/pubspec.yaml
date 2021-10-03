@@ -1,0 +1,37 @@
+name: iiitb_hogwarts
+description: IIITB Hogwarts is a project which aims at increasing students interest in creating projects and giving them a platform to share it with others.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  url_launcher: ^6.0.10
+  http: ^0.13.3
+  flutter_svg: ^0.22.0
+  provider: ^6.0.1
+  shared_preferences: ^2.0.7
+  shimmer: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/
+  fonts:
+    - family: Harry Potter
+      fonts:
+        - asset: fonts/title_harry_potter.ttf
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins_Regular.ttf
+        - asset: fonts/Poppins_Bold.ttf
+          weight: 700
