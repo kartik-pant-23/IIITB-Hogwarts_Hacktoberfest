@@ -9,19 +9,23 @@ exports.register = function (req, res, next) {
     // 2. With every user registering, increment numOfMembers field in Group Schema.
     Group.find().exec()
         .then(groups => {
-            groupNum = Math.floor(Math.random() % 4);
+            const minGroup = Group.find().sort({noOfMembers: 1}).limit(1);
+            const min_noOfMembers=minGroup[0].noOfMembers+1;
+            //groupNum = Math.floor(Math.random() % 4);
             const user = new User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-                group: groups[groupNum]._id
+                //group: groups[groupNum]._id,
+                group: minGroup[0]._id
             });
+            Group.findOneAndUpdate({_id:minGroup[0]._id}, {noOfMembers:min_noOfMembers+1});
             user.save()
                 .then(createdUser => {
                     createdUser.generateToken((err, token) => {
                         if (err) next(err);
                         else {
-			    createdUser.group = groups[groupNum]
+			    createdUser.group = groups[0]
                             res.status(200).json({
                                 message: "User created!",
 				createdUser: createdUser,
