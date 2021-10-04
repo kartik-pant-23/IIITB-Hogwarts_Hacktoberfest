@@ -19,26 +19,24 @@ class HogwartsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     precacheImage(AssetImage("images/background.jpg"), context);
     return Provider(
-      create: (context) => User(),
-      builder: (context, _) {
-        User user = Provider.of<User>(context, listen: false);
-        return MaterialApp(
-          title: "IIITB Hogwarts",
-          debugShowCheckedModeBanner: true,
-          theme: ourTheme(),
-          home: FutureBuilder<bool>(
-            future: userLoginStatus(user),
-            builder: (_, snapshot) {
-              if(snapshot.connectionState == ConnectionState.waiting)
-                return SplashScreen();
-              else if (snapshot.data ?? false)
-                return HomePage();
-              else
-                return LoginPage();
-            }
-          ),
-        );
-      }
-    );
+        create: (context) => User(),
+        builder: (context, _) {
+          User user = Provider.of<User>(context, listen: false);
+          return MaterialApp(
+            title: "IIITB Hogwarts",
+            debugShowCheckedModeBanner: true,
+            theme: ourTheme(),
+            home: FutureBuilder<bool>(
+                future: userLoginStatus(user),
+                builder: (_, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    return SplashScreen();
+                  else if (snapshot.data ?? false)
+                    return HomePage();
+                  else
+                    return LoginPage();
+                }),
+          );
+        });
   }
 }
