@@ -25,7 +25,7 @@ exports.register = function (req, res, next) {
                     createdUser.generateToken((err, token) => {
                         if (err) next(err);
                         else {
-			    createdUser.group = groups[0]
+			    createdUser.group = minGroup[0]
                             res.status(200).json({
                                 message: "User created!",
 				createdUser: createdUser,
