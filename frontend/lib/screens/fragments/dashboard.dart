@@ -8,16 +8,16 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<HomePageData?>(
-      future: loadHomePageData(),
-      builder: (context, snapshot) {
-        if(snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasData && snapshot.data != null) {
-          return Center(child: Text("Data loaded!\nCreate UI to show the data!"));
-        } else {
-          return Center(child: Text("Data loading failed!"));
-        }
-      }
-    );
+        future: loadHomePageData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasData && snapshot.data != null) {
+            return Center(
+                child: Text("Data loaded!\nCreate UI to show the data!"));
+          } else {
+            return Center(child: Text("Data loading failed!"));
+          }
+        });
   }
 }
