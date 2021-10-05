@@ -1,25 +1,22 @@
 const Group = require("../models/group");
 const User = require("../models/user");
-
 // Register new user
 exports.register = function (req, res, next) {
     // TODO: 
     // 1. Groups are assigned randomly, instead assign groups in such a manner
     // that each group has equal number of members. 
     // 2. With every user registering, increment numOfMembers field in Group Schema.
-    Group.find().exec()
+    const minGroup = Group.find().sort({noOfMembers: 1}).limit(1);
+    Group.findOneAndUpdate({_id:minGroup[0]._id}, {noOfMembers:minGroup[0].noOfMembers+1}).exec()
         .then(groups => {
-            const minGroup = Group.find().sort({noOfMembers: 1}).limit(1);
-            const min_noOfMembers=minGroup[0].noOfMembers+1;
             //groupNum = Math.floor(Math.random() % 4);
             const user = new User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
                 //group: groups[groupNum]._id,
-                group: minGroup[0]._id
+                group: minGroup[0]._id,
             });
-            Group.findOneAndUpdate({_id:minGroup[0]._id}, {noOfMembers:min_noOfMembers+1});
             user.save()
                 .then(createdUser => {
                     createdUser.generateToken((err, token) => {
