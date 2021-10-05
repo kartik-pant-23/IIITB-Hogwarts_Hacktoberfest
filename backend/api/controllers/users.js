@@ -2,34 +2,35 @@ const Group = require("../models/group");
 const User = require("../models/user");
 // Register new user
 exports.register = function (req, res, next) {
-    // TODO: 
-    // 1. Groups are assigned randomly, instead assign groups in such a manner
-    // that each group has equal number of members. 
-    // 2. With every user registering, increment numOfMembers field in Group Schema.
-    const minGroup = Group.find().sort({noOfMembers: 1}).limit(1);
-    Group.findOneAndUpdate({_id:minGroup[0]._id}, {noOfMembers:minGroup[0].noOfMembers+1}).exec()
-        .then(groups => {
-            //groupNum = Math.floor(Math.random() % 4);
+    Group.find().sort({numOfMembers: 1}).limit(1).exec()
+	.then(minGroup => {
             const user = new User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-                //group: groups[groupNum]._id,
                 group: minGroup[0]._id,
             });
             user.save()
                 .then(createdUser => {
-                    createdUser.generateToken((err, token) => {
-                        if (err) next(err);
-                        else {
-			    createdUser.group = minGroup[0]
-                            res.status(200).json({
-                                message: "User created!",
-				createdUser: createdUser,
-                                token: token
-                            })
-                        }
-                    })
+		    Group.findOneAndUpdate(
+			{ _id: minGroup[0]._id }, 
+			{ $inc: { numOfMembers: 1 } }, 
+			{ new: true }
+		    ).exec()
+			.then(group => {
+			    createdUser.generateToken((err, token) => {
+				if (err) next(err);
+				else {
+				    createdUser.group = group;
+				    res.status(200).json({
+					message: "User created!",
+					createdUser: createdUser,
+					token: token
+				    })
+				}
+			    })
+			})
+			.catch(err => next(err));
                 })
                 .catch(err => next(err));
         })
