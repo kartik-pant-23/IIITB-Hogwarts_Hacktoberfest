@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:iiitb_hogwarts/screens/fragments/chat.dart';
+import 'package:iiitb_hogwarts/screens/chat/chat.dart';
 import 'package:iiitb_hogwarts/screens/fragments/dashboard.dart';
 import 'package:iiitb_hogwarts/screens/fragments/settings.dart';
 
@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Widget> fragments = [
-    Dashboard(), ChatScreen(), Settings()
+    Dashboard(), ChatMainScreen(), Settings()
   ];
 
   final List<String> fragmentTitles = [
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                     Divider(
                         color: Theme
                             .of(context)
-                            .accentColor
+                            .colorScheme.secondary
                             .withOpacity(0.5)),
                     SizedBox(height: 6),
                     drawerTile(index: 0),
@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Divider(color: Theme
                         .of(context)
-                        .accentColor
+                        .colorScheme.secondary
                         .withOpacity(0.5)),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
