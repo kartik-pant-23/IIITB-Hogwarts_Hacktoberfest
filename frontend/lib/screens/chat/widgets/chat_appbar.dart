@@ -24,7 +24,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
               )
             ]),
             child: Container(
-                color: Palette.accentColor,
+                color: Palette.primaryColor,
                 child: Row(children: <Widget>[
                   Expanded(
                       //we're dividing the appbar into 7 : 3 ratio. 7 is for content and 3 is for the display picture.
@@ -43,33 +43,6 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                                 children: <Widget>[
                                   Text('<Group Name Here>', style: textHeading),
                                   Text('<Group Tagline Here>', style: textStyle)
-                                ],
-                              )),
-                          //second row containing the buttons for media
-                          Container(
-                              height: 23,
-                              padding: EdgeInsets.fromLTRB(20, 5, 5, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    'Messages',
-                                    style: textStyle,
-                                  ),
-                                  VerticalDivider(
-                                    width: 30,
-                                    color: Palette.primaryTextColor,
-                                  ),
-                                  Text(
-                                    'Attachments',
-                                    style: textStyle,
-                                  ),
-                                  // VerticalDivider(
-                                  //   width: 30,
-                                  //   color: Palette.primaryTextColor,
-                                  // ),
-                                  // Text('Files', style: textStyle)
                                 ],
                               )),
                         ],

@@ -43,10 +43,10 @@ class ChatListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    User user = Provider.of<User>(context, listen: false);
+    // User user = Provider.of<User>(context, listen: false);
     return StreamBuilder<List<ChatHead>>(
         // get all messages from given group id as List of <ChatHeads>
-        stream: ChatServices().getChatsByGroupId(groupid: "GROUP_ID"),
+        stream: ChatServices().getChatsByGroupId(groupid: "<GROUP_ID here>"),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -59,7 +59,7 @@ class ChatListWidget extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             itemBuilder: (context, index) => ChatItemWidget(
               chatHead: snapshot.data![index],
-              userId: '182ae4e0-e24f-4597-b232-016b823009ed'//"USER_ID",
+              userId: '182ae4e0-e24f-4597-b232-016b823009ed'//"USER_ID here {snapshot.data![index].senderId}",
             ),
             itemCount: 20,
             reverse: true,

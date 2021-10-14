@@ -2,32 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:iiitb_hogwarts/constants/palette.dart';
 
 class InputWidget extends StatelessWidget {
-
-  final TextEditingController textEditingController = new TextEditingController();
+  final TextEditingController textEditingController =
+      new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Row(
         children: <Widget>[
-          Material(
-            child: new Container(
-              margin: new EdgeInsets.symmetric(horizontal: 1.0),
-              child: new IconButton(
-                icon: new Icon(Icons.face), onPressed: () {  },
-                color: Palette.primaryColor,
-              ),
-            ),
-            color: Colors.white,
-          ),
+          // Material(
+          //   child: new Container(
+          //     margin: new EdgeInsets.symmetric(horizontal: 1.0),
+          //     child: new IconButton(
+          //       icon: new Icon(Icons.face), onPressed: () {
+          //         //todo
+          //       // popup sticker here
+          //     },
+          //       color: Palette.primaryColor,
+          //     ),
+          //   ),
+          //   color: Colors.white,
+          // ),
 
           // Text input
           Flexible(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                style: TextStyle(
-                    // color: Palette.primaryTextColor,
-                    fontSize: 15.0),
+                style: TextStyle(color: Palette.primaryColor, fontSize: 15.0),
                 controller: textEditingController,
                 decoration: InputDecoration.collapsed(
                   hintText: 'Type a message',
@@ -40,14 +42,19 @@ class InputWidget extends StatelessWidget {
           // Send Message Button
           Material(
             child: new Container(
-              margin: new EdgeInsets.symmetric(horizontal: 8.0),
+              margin: new EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
               child: new IconButton(
-                icon: new Icon(Icons.send),
-                onPressed: () => {},
-                color: Palette.primaryColor,
+                icon: new Icon(
+                  Icons.send,
+                ),
+                onPressed: () => {
+                  // todo
+                  // send message on click function
+                },
+                color: Palette.accentColor,
               ),
             ),
-            color: Colors.white,
+            color: Colors.transparent,
           ),
         ],
       ),
@@ -55,10 +62,9 @@ class InputWidget extends StatelessWidget {
       height: 50.0,
       decoration: new BoxDecoration(
           border: new Border(
-              top: new BorderSide(
-                  // color: Palette.greyColor,
-                  width: 0.5)),
-          color: Colors.white),
+              top: new BorderSide(color: Palette.greyColor, width: 0.5)),
+          // color: Colors.white
+      ),
     );
   }
 }

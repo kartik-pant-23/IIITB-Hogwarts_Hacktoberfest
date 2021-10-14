@@ -11,11 +11,11 @@ class Palette{
   static Color hintTextColor = Colors.white70;
 
 
-  static Color selfMessageBackgroundColor = Color(0xff4fc3f7);
-  static Color otherMessageBackgroundColor = Colors.white;
+  static Color selfMessageBackgroundColor = Color(0xFFDF267C);
+  static Color otherMessageBackgroundColor = Color(0xFFDF267C).withOpacity(0.2);
 
   static Color selfMessageColor = Colors.white;
-  static Color otherMessageColor = Color(0xff3f3f3f);
+  static Color otherMessageColor = Colors.white;
 
   static Color greyColor = Colors.grey;
 }

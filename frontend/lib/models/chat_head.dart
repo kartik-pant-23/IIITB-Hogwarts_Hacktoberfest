@@ -7,8 +7,8 @@ const String _jsonKeyChatHeadSender = "sender";
 const String _jsonKeyChatHeadMsg = "msg";
 const String _jsonKeyChatHeadSenderId = "sender_id";
 const String _jsonKeyChatHeadSenderProfileUrl = "sender_profile_url";
-const String _jsonKeyChatHeadIsSeen = "is_seen";
-const String _jsonKeyChatHeadIsDelivered = "is_delivered";
+// const String _jsonKeyChatHeadIsSeen = "is_seen";
+// const String _jsonKeyChatHeadIsDelivered = "is_delivered";
 const String _jsonKeyChatHeadTimestamp = "timestamp";
 class ChatHead {
 /*
@@ -31,8 +31,8 @@ class ChatHead {
   String? msg;
   String? senderId;
   String? senderProfileUrl;
-  bool? isSeen;
-  bool? isDelivered;
+  // bool? isSeen;
+  // bool? isDelivered;
   String? timestamp;
   Map<String, dynamic> __origJson = {};
 
@@ -43,8 +43,8 @@ class ChatHead {
     this.msg,
     this.senderId,
     this.senderProfileUrl,
-    this.isSeen,
-    this.isDelivered,
+    // this.isSeen,
+    // this.isDelivered,
     this.timestamp,
   });
   ChatHead.fromJson(Map<String, dynamic> json) {
@@ -55,8 +55,8 @@ class ChatHead {
     msg = json[_jsonKeyChatHeadMsg]?.toString();
     senderId = json[_jsonKeyChatHeadSenderId]?.toString();
     senderProfileUrl = json[_jsonKeyChatHeadSenderProfileUrl]?.toString();
-    isSeen = json[_jsonKeyChatHeadIsSeen];
-    isDelivered = json[_jsonKeyChatHeadIsDelivered];
+    // isSeen = json[_jsonKeyChatHeadIsSeen];
+    // isDelivered = json[_jsonKeyChatHeadIsDelivered];
     timestamp = json[_jsonKeyChatHeadTimestamp]?.toString();
   }
   Map<String, dynamic> toJson() {
@@ -67,8 +67,8 @@ class ChatHead {
     data[_jsonKeyChatHeadMsg] = msg;
     data[_jsonKeyChatHeadSenderId] = senderId;
     data[_jsonKeyChatHeadSenderProfileUrl] = senderProfileUrl;
-    data[_jsonKeyChatHeadIsSeen] = isSeen;
-    data[_jsonKeyChatHeadIsDelivered] = isDelivered;
+    // data[_jsonKeyChatHeadIsSeen] = isSeen;
+    // data[_jsonKeyChatHeadIsDelivered] = isDelivered;
     data[_jsonKeyChatHeadTimestamp] = timestamp;
     return data;
   }
