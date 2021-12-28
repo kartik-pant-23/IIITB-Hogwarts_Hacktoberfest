@@ -1,6 +1,6 @@
 # IIITB-Hogwarts
 
-* This is going to be fun project for our college students. Thinking of bringing Harry Potter style group division into college. This is going to be a mobile application and the platform/frameworks are subject to discussion. 
+This is going to be fun project for our college students. Thinking of bringing Harry Potter style group division into college. This is going to be a mobile application and the platform/frameworks are subject to discussion. 
 
 ## Basic Thought
 
